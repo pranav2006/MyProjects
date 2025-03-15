@@ -70,9 +70,14 @@ def get_anime_recommendations(genre_id, anime_length):
 
         return filtered_anime[:10]
     
-    except requests.exceptions.RequestException as e:
-        print(f"An error occurred: {e}")
-        return []
+    except requests.exceptions.HTTPError as he:
+        print(f"HTTP error occurred: {he}")
+    except requests.exceptions.ConnectionError:
+        print("Connection error occurred. Please check your Internet connection.")
+    except requests.exceptions.Timeout:
+        print("The request timed out. Try again later.")
+    except requests.exceptions.RequestException as err:
+        print(f"An error occurred: {err}")
 
 def get_anime_episodes(anime_id, page=1):
     try:
