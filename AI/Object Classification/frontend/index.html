@@ -110,7 +110,7 @@
             document.getElementById("status").innerText = "Uploading...";
 
             try {
-                const response = await fetch("http://localhost:8000/", {
+                const response = await fetch("http://localhost:8000/predict/", {
                     method: "POST",
                     body: formData
                 });
