@@ -1,0 +1,12 @@
+{
+    "builds": [
+      {
+        "src": "main.py",
+        "use": "@vercel/python",
+        "config": { "installCommand": "curl https://bootstrap.pypa.io/get-pip.py | python3" }
+      }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "main.py" }
+    ]
+  }
